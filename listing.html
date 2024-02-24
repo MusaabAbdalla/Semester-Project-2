@@ -44,7 +44,7 @@
                             <a href="feed/index.html" class=" nav-link disabled " >Listings</a>
                         </li>
                         <li class="nav-item ">
-                            <a href="#index.html" class=" nav-link disabled ">Profile</a>
+                            <a href="./profile.html" class=" nav-link  ">Profile</a>
                         </li>
                     </ul>
 
@@ -65,14 +65,77 @@
             </div>
 
         </div>
-        <div class="container d-flex flex-row justify-content-start gap-5 my-4">
-            <button type="button" class="btn btn-primary" style="width: 15ch;"> Newest First</button>
-            <button type="button" class="btn btn-primary" style="width: 15ch;"> Oldest first</button>
+        <div class="container mt-5" id="seller-info">
+            <p class="fs-1">Seller</p>
+            <div class="d-flex flex-row align-items-center ">
+                <img src="./images/avataaars.png" class="" alt="avatar image" width="128" >
+                <div>
+                    <p class="fs-5">Name: Jack</p>
+                    <p class="fs-5">Email: jack@stud.noroff.no</p>
+                </div>
+            </div>
         </div>
-        <div class="container d-flex flex-row justify-content-between gap-5 my-4">
-            <button type="button" class="btn btn-secondary" style="width: 15ch;"> Newest First</button>
-            <p class="fs-5 text-secondary">Page1 - listings 1-10</p>
-            <button type="button" class="btn btn-secondary" style="width: 15ch;"> Oldest first</button>
+        <div class="container mt-5" id="listing-detail">
+            <div class="row gap-5">
+                <div class="col-12 col-md-8 ">
+                    <img src="./images/lenestol.jpg" class="img-fluid border border-primary rounded" alt="listing image">
+                </div>
+                <div class="col-12 col-md-3">
+                    <p class="fs-2">LeneStol</p>
+                    <p calss="fs-4 fw-bold">Description:</p>
+                    <p clas="fs5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Mauris ultrices eros in cursus. Arcu risus quis varius quam quisque id diam vel quam. Nibh mauris cursus mattis molestie a. Adipiscing bibendum est ultricies integer quis auctor elit sed. Pretium viverra suspendisse potenti nullam ac tortor vitae purus.</p>
+                    <p class="fs-6">Created: 2/10/2024</p>
+                    <p class="fs-6">Updated: 2/10/2024</p>
+                    <p class="fs-6 text-danger">Ends At: 2/10/2024</p>
+                </div>
+
+            </div>
+            
+
+        </div>
+
+        <form class="container mt-4 d-flex justify-content-start" class="" id="bid-form" >
+            <input type="text" class="form-control me-3 border border-primary" id="bid-input" placeholder=" Enter your bid amount" style="max-width: 300px" />
+            <button type="submit" class="btn btn-primary me-2" style="width: 12ch;">Submit Bid</button>
+        </form>
+
+        <div class="mt-4" id="">
+            <div class="container bg-secondary">
+                <p class="fs-3 py-2 text-light text-center">Bids History</p>
+            </div>
+            <div class="container" id="listing-history">
+                <div class="border border-primary rounded bg-warning ps-3 mb-3">
+                    <p class="fs-4 text-bold">Bid Amount: $7</p>
+                    <p class="fs-4 text-bold">Bidder Name: Musaab</p>
+                    <p class="fs-4 text-bold">Bid date: 2/13/2024</p>
+                </div>
+
+                <div class="border border-primary rounded ps-3 mb-3">
+                    <p class="fs-4 text-bold">Bid Amount: $7</p>
+                    <p class="fs-4 text-bold">Bidder Name: Musaab</p>
+                    <p class="fs-4 text-bold">Bid date: 2/13/2024</p>
+                </div>
+
+                <div class="border border-primary rounded ps-3 mb-3">
+                    <p class="fs-4 text-bold">Bid Amount: $7</p>
+                    <p class="fs-4 text-bold">Bidder Name: Musaab</p>
+                    <p class="fs-4 text-bold">Bid date: 2/13/2024</p>
+                </div>
+                <div class="border border-primary rounded ps-3 mb-3">
+                    <p class="fs-4 text-bold">Bid Amount: $7</p>
+                    <p class="fs-4 text-bold">Bidder Name: Musaab</p>
+                    <p class="fs-4 text-bold">Bid date: 2/13/2024</p>
+                </div>
+                <div class="border border-primary rounded ps-3 mb-3">
+                    <p class="fs-4 text-bold">Bid Amount: $7</p>
+                    <p class="fs-4 text-bold">Bidder Name: Musaab</p>
+                    <p class="fs-4 text-bold">Bid date: 2/13/2024</p>
+                </div>
+
+                
+            
+            </div>
+
         </div>
 
 
