@@ -1,6 +1,16 @@
-import { API_BASE, API_AUTH, API_REGISTER, API_LOGIN, API_KEY_URL, API_KEY } from "./utils/variables.mjs";
-import {save} from "./storage/save.mjs"
-import {load} from "./storage/load.mjs"
+import {
+  API_BASE,
+  API_AUTH,
+  API_REGISTER,
+  API_LOGIN,
+  API_KEY_URL,
+  API_KEY,
+} from "./utils/variables.mjs";
+import { save } from "./storage/save.mjs";
+import { load } from "./storage/load.mjs";
+import { userLogin } from "./api/auth/login.mjs";
+import { userRegister } from "./api/auth/register.mjs";
+import { getPosts } from "./api/posts/get.mjs";
 const signUpSelector = document.querySelector("#singup-button");
 const loginSelector = document.querySelector("#login-button");
 
@@ -11,7 +21,6 @@ const signupSubmitButton = document.getElementById("signup-submit");
 let userName;
 let userEmail;
 let userPassword;
-
 
 //This part is for selecting Register-form
 signUpSelector.addEventListener("click", () => {
@@ -43,7 +52,7 @@ loginSubmitButton.onclick = () => {
   userPassword = loginForm.password.value;
   console.log(userEmail);
   console.log(userPassword);
-  userLogin(API_BASE + API_AUTH + API_LOGIN);
+  userLogin(userEmail, userPassword);
 };
 
 //when clicking signup button, i will add more functionality to check the
@@ -53,98 +62,34 @@ signupSubmitButton.addEventListener("click", () => {
   userName = signupForm.username.value;
   userEmail = signupForm.email.value;
   userPassword = signupForm.password.value;
-  userRegister(API_BASE + API_AUTH + API_REGISTER);
+  userRegister(userName, userEmail, userPassword);
 });
 
-/**
- * this is an authentaction function that will register a new user
- * @param {string} url the url for API register
- */
-async function userRegister(url) {
-  try {
-    const data = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: userName,
-        email: userEmail,
-        password: userPassword,
-      }),
-    };
-    const response = await fetch(url, data);
-    console.log(response);
-    const json = await response.json();
-    console.log(json);
-  } catch (error) {
-    console.log(error);
+
+export async function getAPIKey() {
+  const response = await fetch(API_BASE + API_AUTH + API_KEY_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${load("token")}`,
+    },
+    body: JSON.stringify({
+      name: "MY API KEY",
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } else {
+    throw new Error("Could not register for API key!!!!");
   }
 }
 
-/**
- *the is an authentication function that will login a registered user
- * @param {string} url the url for API login
- */
-async function userLogin(url) {
-    const option = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: userEmail,
-        password: userPassword,
-      }),
-    };
-    const response = await fetch(url, option);
-    if(response.ok){
-        const {accessToken, ...profile} = (await response.json()).data
-        save("token", accessToken)
-        save("profile", profile)
-        console.log(accessToken)
-        console.log(profile)
-        return profile
-
-    }
-    throw new Error("Could not login account")
- 
-}
-
-export async function getAPIKey(){
-    const response = await fetch(API_BASE + API_AUTH + API_KEY_URL,{
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${load("token")}`
-        },
-        body: JSON.stringify({
-            name: "MY API KEY"
-        })
-    })
-    if(response.ok){
-        const data = await response.json()
-        console.log(data)
-        return data 
-    }
-    else{
-        throw new Error("Could not register for API key!!!!")
-    }
-}
-
 // getAPIKey()
-export async function getPosts(){
-    const response =  await fetch(API_BASE + "/auction/listings")
-    if(response.ok){
-        const posts = await response.json()
-        console.log(posts)
-        return posts
 
-    }
-    throw new Error("Can not get Posts")
-}
 
-getPosts()
+getPosts();
 
 // ,{
 //         headers:{
