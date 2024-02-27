@@ -13,7 +13,7 @@ export async function userRegister(userName, userEmail, userPassword) {
         password: userPassword,
       }),
     };
-    const response = await fetch(API_BASE + API_AUTH +API_REGISTER, option);
+    const response = await fetch(API_BASE + API_AUTH + API_REGISTER, option);
     console.log(response);
     const json = await response.json();
     console.log(json);
