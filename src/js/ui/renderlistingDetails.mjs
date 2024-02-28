@@ -1,3 +1,5 @@
+import { formatDate } from "../utils/formatDate.mjs"
+
 export function renderListingDetails(listing){
 const listingDetailsContainer = document.querySelector("#listing-detail")
     listingDetailsContainer.innerHTML = ""
@@ -12,9 +14,9 @@ const listingDetailsContainer = document.querySelector("#listing-detail")
                     <p class="fs-2">${listing.title}</p>
                     <p calss="fs-4 fw-bold">Description:</p>
                     <p clas="fs5">${listing.description}</p>
-                    <p class="fs-6">Created: ${listing.created}</p>
-                    <p class="fs-6">Updated: ${listing.updated}</p>
-                    <p class="fs-6 text-danger">Ends At: ${listing.endsAt}</p>
+                    <p class="fs-6">Created: ${formatDate(listing.created)}</p>
+                    <p class="fs-6">Updated: ${formatDate(listing.updated)}</p>
+                    <p class="fs-6 text-danger">Ends At: ${formatDate(listing.endsAt)}</p>
                 </div>
             </div>
         </div>
