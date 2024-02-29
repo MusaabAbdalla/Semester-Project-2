@@ -19,9 +19,9 @@ export async function userLogin(userEmail, userPassword) {
     save("profile", profile);
     console.log(accessToken);
     console.log(profile);
-    window.location.replace("../../../profile")
+    window.location.replace("../../../profile");
     return profile;
   }
-  
+
   throw new Error("Could not login account");
 }

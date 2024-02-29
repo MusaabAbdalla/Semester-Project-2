@@ -1,7 +1,7 @@
-export function renderProfile(profile){
-   const profileContainer = document.querySelector("#profile-info") 
-   profileContainer.innerHTML = ""
-   profileContainer.innerHTML =`
+export function renderProfile(profile) {
+  const profileContainer = document.querySelector("#profile-info");
+  profileContainer.innerHTML = "";
+  profileContainer.innerHTML = `
 
             <div class="container d-flex flex-row align-items-center gap-3 mb-3 ">
                 <img src="${profile.avatar.url}" class="rounded-circle" alt="${profile.avatar.url}" width="200">
@@ -43,6 +43,5 @@ export function renderProfile(profile){
                     </a>
                 </div>
             </div>
-   `
-
+   `;
 }

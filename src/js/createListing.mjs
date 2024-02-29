@@ -36,40 +36,45 @@ createListingForm.addEventListener("submit",(e)=>{
     const imageUrl = createListingForm.imageUrl.value
     const body = createListingForm.body.value
     const endsAt = createListingForm.endsAt.value
+    const tags = tagsArray
 
     // console.log(title)
     // console.log(imageUrl)
     // console.log(body)
     // console.log(endsAt)
     const data = {
-  "title": "string",
-  "description": "string",
-  "endsAt": "2024-02-26T11:00:54.247Z",
-  "tags": [
-    "string"
-  ],
+  "title":title ,
+  "description": body,
+  "endsAt": endsAt,
+  "tags":tags,
   "media": [
     {
-      "url": "string",
+      "url": imageUrl,
       "alt": ""
     }
   ]
 }
 
-
 })
 
-// {
-//   "title": "string",
-//   "description": "string",
-//   "endsAt": "2024-02-26T11:00:54.247Z",
-//   "tags": [
-//     "string"
-//   ],
-//   "media": [
-//     {
-//       "url": "string",
-//       "alt": ""
-//     }
-//   ]
-// }
+export async function createListing(data){
+
+    try {
+        const option = {
+            method:"PUT",
+            headers:{
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${}` 
+            },
+            body: JSON.stringify(data)
+
+            
+        }
+
+    } 
+    catch (error) {
+        
+        console.log(error)
+    }
+
+}

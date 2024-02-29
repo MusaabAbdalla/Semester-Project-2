@@ -1,9 +1,9 @@
-import { formatDate } from "../utils/formatDate.mjs"
+import { formatDate } from "../utils/formatDate.mjs";
 
-export function renderListingDetails(listing){
-const listingDetailsContainer = document.querySelector("#listing-detail")
-    listingDetailsContainer.innerHTML = ""
-    listingDetailsContainer.innerHTML = `
+export function renderListingDetails(listing) {
+  const listingDetailsContainer = document.querySelector("#listing-detail");
+  listingDetailsContainer.innerHTML = "";
+  listingDetailsContainer.innerHTML = `
         <div class="container mt-5" id="listing-detail">
             <div class="row gap-5">
                 <div class="col-12 col-md-8 ">
@@ -21,5 +21,5 @@ const listingDetailsContainer = document.querySelector("#listing-detail")
             </div>
         </div>
 
-    `
+    `;
 }
