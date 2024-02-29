@@ -1,7 +1,11 @@
+import { createListing } from "./api/listings/createListings.mjs"
 const createListingForm = document.querySelector("#create-listing-form")
 const tagsInput = document.querySelector("#tags")
 const clearTags = document.querySelector("#clear-tags")
 const tagsView = document.querySelector("#tags-view")
+
+
+
 let tagsArray = []
 
 tagsInput.addEventListener("keydown",(e)=>{
@@ -42,7 +46,7 @@ createListingForm.addEventListener("submit",(e)=>{
     // console.log(imageUrl)
     // console.log(body)
     // console.log(endsAt)
-    const data = {
+    const listing = {
   "title":title ,
   "description": body,
   "endsAt": endsAt,
@@ -54,27 +58,6 @@ createListingForm.addEventListener("submit",(e)=>{
     }
   ]
 }
+createListing(listing)
 
 })
-
-export async function createListing(data){
-
-    try {
-        const option = {
-            method:"PUT",
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${}` 
-            },
-            body: JSON.stringify(data)
-
-            
-        }
-
-    } 
-    catch (error) {
-        
-        console.log(error)
-    }
-
-}
