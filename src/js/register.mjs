@@ -1,8 +1,11 @@
-import { API_BASE, API_AUTH, API_KEY_URL } from "./utils/variables.mjs";
+import {
+  API_BASE,
+  API_AUTH,
+  API_KEY_URL,
+} from "./utils/variables.mjs";
 import { load } from "./storage/load.mjs";
 import { userLogin } from "./api/auth/login.mjs";
 import { userRegister } from "./api/auth/register.mjs";
-import { getPosts } from "./api/posts/get.mjs";
 const signUpSelector = document.querySelector("#singup-button");
 const loginSelector = document.querySelector("#login-button");
 
@@ -57,6 +60,7 @@ signupSubmitButton.addEventListener("click", () => {
   userRegister(userName, userEmail, userPassword);
 });
 
+
 export async function getAPIKey() {
   const response = await fetch(API_BASE + API_AUTH + API_KEY_URL, {
     method: "POST",
@@ -79,7 +83,7 @@ export async function getAPIKey() {
 
 // getAPIKey()
 
-getPosts();
+
 
 // ,{
 //         headers:{
