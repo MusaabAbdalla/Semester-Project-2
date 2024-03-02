@@ -83,12 +83,16 @@
 
         </div>
 
-        <form class="container mt-4 d-flex justify-content-start" class="" id="bid-form">
-            <input type="text" class="form-control me-3 border border-primary" id="bid-input"
-                placeholder=" Enter your bid amount" style="max-width: 300px" />
-            <button type="submit" class="btn btn-primary me-2" style="width: 12ch;">Submit Bid</button>
-        </form>
-
+        <div class="container d-flex flex-column">
+            <form class="container mt-4 d-flex justify-content-start" class="" id="bid-form">
+                <input type="text" class="form-control me-3 border border-primary" name="amount" id="bid-input"
+                    placeholder=" Enter your bid amount" style="max-width: 300px" />
+                <button type="submit" class="btn btn-primary me-2" style="width: 12ch;">Submit Bid</button>
+            </form>
+            <div class="alert alert-success mt-1 text-center fs-2 d-none" id="success-alert">Your Bid Has Been Added!!!
+            </div>
+            <div class="alert alert-danger mt-1 text-center fs-2 d-none" id="danger-alert">Error</div>
+        </div>
         <div class="mt-4" id="">
             <div class="container bg-secondary">
                 <p class="fs-3 py-2 text-light text-center">Bids History</p>
