@@ -4,14 +4,14 @@ export function renderProfile(profile) {
   profileContainer.innerHTML = `
 
             <div class="container d-flex flex-row align-items-center gap-3 mb-3 ">
-                <img src="${profile.avatar.url}" class="rounded-circle" alt="${profile.avatar.url}" width="200">
+                <img src="${profile.avatar.url}" class="rounded" alt="${profile.avatar.url}" width="200">
                 <div>
                     <p class="fs-5">Name: ${profile.name}</p>
                     <p class="fs-5">Email: ${profile.email}</p>
                     <button class="btn btn-danger">Logout</button>
                 </div>
             </div>
-            <div class="container" style="width:50vw; ">
+            <div class="container" style="width:50vw; margin-top: 120px; ">
                 <div class="container bg-light border border-primary rounded p-4 ">
                     <div class="d-flex justify-content-start  ">
                         <p class="fs-4 fw-bold" style="width: 14ch;">Name</p>
@@ -35,7 +35,7 @@ export function renderProfile(profile) {
                     </div>
                 </div>
                 <div class="mt-2 d-flex justify-content-between">
-                    <a href="#">
+                    <a href="../create/update-profile.html">
                         <button class="btn btn-primary">Update Avatar</button>
                     </a>
                     <a href="../create/create-listing.html">
