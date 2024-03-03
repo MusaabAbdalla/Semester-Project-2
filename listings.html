@@ -39,7 +39,7 @@
                             <a href="./listings.html" class=" nav-link active">Listings</a>
                         </li>
                         <li class="nav-item ">
-                            <a href="./profile/index.html" class=" nav-link ">Profile</a>
+                            <a href="./profile/index.html" class=" nav-link d-none " id="profile-link">Profile</a>
                         </li>
                     </ul>
 
@@ -54,10 +54,13 @@
         <div class="container d-flex flex-column justify-content-center mt-5  ">
             <div>
                 <form class="d-flex" class="search-form" id="search-form" style="margin-top: 200px;">
-                    <input type="text" class="form-control me-3 border border-primary" id="search-input" />
+                    <input type="text" class="form-control me-3 border border-primary" name="search" id="search-input"
+                        required />
                     <button type="submit" class="btn btn-primary me-2">Search</button>
                 </form>
             </div>
+            <div class="alert alert-success mt-1 text-center fs-2 d-none " id="success-alert"></div>
+            <div class="alert alert-danger mt-1 text-center fs-2 d-none" id="danger-alert">Error</div>
 
         </div>
         <div class="container d-flex flex-row justify-content-start gap-5 my-4">

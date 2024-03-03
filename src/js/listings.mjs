@@ -1,27 +1,44 @@
 import { getListings } from "./api/listings/getListings.mjs";
-import { formatDate } from "./utils/formatDate.mjs";
-
-const listingsCardsContainer = document.querySelector("#listings-container");
-// console.log(listCardsContainer.innerHTML)
-
+import { load } from "./storage/load.mjs";
+import { renderListings } from "./ui/renderListings.mjs";
+const searchForm = document.querySelector("#search-form")
+const successAlert = document.querySelector("#success-alert")
+const dangerAlert = document.querySelector("#danger-alert")
+const profileLink = document.querySelector("#profile-link")
+const profileName = load("profile") ;
 const listings = await getListings();
-console.log(listings);
-
-export function renderListings() {
-  listingsCardsContainer.innerHTML = [];
-
-  listings.forEach((listing) => {
-    listingsCardsContainer.innerHTML += `
-                <div class="card col-5 col-xxl-3 ">
-                    <img src="${listing.media[0].url}" class="card-img-top" alt="${listing.media[0].alt}">
-                    <div class="card-body">
-                        <h5 class="card-title">${listing.title}</h5>
-                        <p class="card-text"><small class="text-danger">Ends At ${formatDate(listing.endsAt)}</small></p>
-                        <a href="./listing/listing.html?id=${listing.id}" data-id="${listing.id}" class="stretched-link"></a>
-                    </div>
-                </div>
-    `;
-  });
+if(profileName){
+    profileLink.classList.toggle("d-none")
 }
 
-renderListings();
+
+renderListings(listings);
+
+searchForm.addEventListener("submit",async(e)=>{
+  e.preventDefault()
+  const searchValue =  searchForm.search.value
+  const search = `/search?q=${searchValue}` 
+  const newListings = await getListings(search)
+  console.log(newListings)
+
+        if(newListings.length > 0){
+                renderListings(newListings)
+                successAlert.classList.toggle("d-none");
+                successAlert.innerHTML= `${newListings.length} Bids found` 
+                setTimeout(()=>{
+                successAlert.classList.toggle("d-none")
+            },1000)
+        }
+        else{
+            dangerAlert.classList.toggle("d-none")
+            dangerAlert.innerHTML= `No search results for ${searchValue}` 
+            setTimeout(()=>{
+                dangerAlert.classList.toggle("d-none")
+            },5500)     
+
+
+        } 
+
+} )
+
+

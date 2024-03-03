@@ -8,7 +8,7 @@ export function renderProfile(profile) {
                 <div>
                     <p class="fs-5">Name: ${profile.name}</p>
                     <p class="fs-5">Email: ${profile.email}</p>
-                    <button class="btn btn-danger">Logout</button>
+                    <button class="btn btn-danger" id="logout-button">Logout</button>
                 </div>
             </div>
             <div class="container" style="width:50vw; margin-top: 120px; ">
