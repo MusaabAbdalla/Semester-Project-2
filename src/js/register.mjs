@@ -41,8 +41,6 @@ loginSubmitButton.onclick = () => {
   event.preventDefault();
   userEmail = loginForm.email.value;
   userPassword = loginForm.password.value;
-  console.log(userEmail);
-  console.log(userPassword);
   userLogin(userEmail, userPassword);
 };
 
